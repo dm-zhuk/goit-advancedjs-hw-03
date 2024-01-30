@@ -1,11 +1,11 @@
 {
-  "name": "cat-selector-api",
+  "name": "goit-advancedjs-hw-03upd",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/Cat Selector API/",
+    "build": "vite build --base=/goit-advancedjs-hw-03upd/",
     "preview": "vite preview"
   },
   "devDependencies": {
