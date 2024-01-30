@@ -27,6 +27,7 @@ function selectorUpload() {
       onError();
     })
     .finally(function () {
+      toggleClass(selector, true);
       toggleClass(loader, false);
       toggleClass(catInfo, true);
     });
@@ -42,7 +43,7 @@ function createMarkup(evt) {
   fetchCatByBreed(breedId)
     .then(function (catData) {
       if (catData.length === 0) {
-        catInfo.innerHTML = `<h3></h3>`;
+        catInfo.innerHTML = ``;
       }
       const { url, breeds } = catData[0];
 
