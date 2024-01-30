@@ -28,7 +28,7 @@ function selectorUpload() {
     })
     .finally(function () {
       toggleClass(loader, false);
-      toggleClass(catInfo, false);
+      toggleClass(catInfo, true);
     });
 }
 
@@ -41,10 +41,13 @@ function createMarkup(evt) {
 
   fetchCatByBreed(breedId)
     .then(function (catData) {
+      if (catData.length === 0) {
+        catInfo.innerHTML = `<h3></h3>`;
+      }
       const { url, breeds } = catData[0];
 
       catInfo.innerHTML = `
-        <img class="cat-picture" src="${url}" alt="${breeds[0].name}" width="400" loading="lazy" />
+        <img src="${url}" alt="${breeds[0].name}" width="400" loading="lazy" />
         <div class="text-box">
           <h2>${breeds[0].name}</h2>
           <p>${breeds[0].description}</p>
@@ -67,10 +70,7 @@ function onError() {
     title: '🔻 Oops!',
     message: 'Something went wrong! Try reloading the page!',
     position: 'topCenter',
-    timeout: 1500,
   });
-  toggleClass(loader, false);
-  toggleClass(selector, true);
 }
 
 selector.addEventListener('change', createMarkup);

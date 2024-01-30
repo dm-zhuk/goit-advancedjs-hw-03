@@ -9,15 +9,11 @@ const IMAGES_ENDPOINT = `${BASE_URL}/images/search`;
 axios.defaults.headers.common['x-api-key'] = API_KEY;
 
 export function fetchBreeds() {
-  return axios
-    .get(`${BREEDS_ENDPOINT}`)
-    .then(response => response.data)
-    .catch(error => console.error(error));
+  return axios.get(`${BREEDS_ENDPOINT}`).then(response => response.data);
 }
 
 export function fetchCatByBreed(breedId) {
   return axios
     .get(`${IMAGES_ENDPOINT}?breed_ids=${breedId}`)
-    .then(response => response.data)
-    .catch(error => console.error(error));
+    .then(response => response.data);
 }
