@@ -7,6 +7,7 @@ import { fetchBreeds, fetchCatByBreed } from './cat-api';
 const selector = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
 const catInfo = document.querySelector('.cat-info');
+const plainSelector = document.querySelector('.js-plain');
 
 function toggleClass(element, isVisible) {
   element.classList.toggle('ss-hidden', !isVisible);
@@ -15,6 +16,7 @@ function toggleClass(element, isVisible) {
 function selectorUpload() {
   fetchBreeds()
     .then(function (breeds) {
+      plainSelector.classList.remove('is-hidden');
       const slimSelector = breeds.map(
         ({ id, name }) => `<option value="${id}">${name}</option>`
       );
